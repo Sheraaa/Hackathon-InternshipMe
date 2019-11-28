@@ -11,10 +11,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: ' <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(mymap); 
-
-var marker = L.marker([50.8638372, 4.3607629]).addTo(mymap);
+var marker = L.marker([50.8638372, 4.3607629]).addTo(mymap); 
 marker.bindPopup("<b>Hello world!</b><br>It's Interface3.  <br> <a href=''> more </a>").openPopup();
-
 /**************************Afficher les buttons*****************************/
 /* $("#app").css({
     "padding-top":"200px",
@@ -37,19 +35,17 @@ $(".styled").css(
     }
 )
 /***********************************************************************************/
-function ConvertAdress(adresse){
+function ConvertAdress(adresse,nomEntreprise){
         $.ajax({
             url: "https://nominatim.openstreetmap.org/search", // URL de Nominatim
             type: 'get', // Requête de type GET
             data: "q="+adresse+"&format=json&addressdetails=1&limit=1&polygon_svg=1" // Données envoyées (q -> adresse complète, format -> format attendu pour la réponse, limit -> nombre de réponses attendu, polygon_svg -> fournit les données de polygone de la réponse en svg)
         }).done(function (response) {
-            if(response != ""){
+            if(response !== ""){
                 userlat = response[0]['lat'];
                 userlon = response[0]['lon'];
-               // console.log(userlat);
-               // console.log(userlon);
-                var marker3 = L.marker([userlat,userlon]).addTo(mymap);
-                marker3.bindPopup("<b>Hello world!</b><br> It's my Adresse.  <br> <a href=''> more </a>").openPopup();
+                marker = L.marker([userlat,userlon]).addTo(mymap);
+                marker.bindPopup("<b>Hello world!</b><br>  "+ nomEntreprise +" <br> <a href=''> more </a>").openPopup();
             }                
         }).fail(function (error) {
             alert(error);
@@ -78,7 +74,7 @@ function ConvertAdress(adresse){
 /************************************************************************************* */
 
 let allButtons = document.querySelectorAll("button");
-console.log(allButtons);
+//console.log(allButtons);
 
 // boucle pour chaque bouton
 for (let i=0; i< allButtons.length; i++)
@@ -112,10 +108,9 @@ for (let i=0; i< allButtons.length; i++)
 
 
 function generate(arrayObjects){
-    console.log(arrayObjects); 
+    console.log("toto"); 
     for(let i=0; i< arrayObjects.length; i++)
-    {
-        ConvertAdress(arrayObjects[i].adresse);
+    {         
+       ConvertAdress(arrayObjects[i].adresse,arrayObjects[i].nomEntreprise);
     }
 }
-

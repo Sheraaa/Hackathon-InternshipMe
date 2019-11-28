@@ -13,12 +13,12 @@ $bdd = new PDO(DBDRIVER.':host='.DBHOST.';port='.DBPORT.
 
 //var_dump($_POST);
 if($_POST["choix"] == "wad"){
-    //$sql= "SELECT titre FROM seriebd";
+    $sql= "SELECT * FROM `entreprise` JOIN `stage` ON stage.idEntreprise = entreprise.idEntreprise JOIN `user` ON stage.idUser = user.idUser JOIN `formation` On user.idFormation = formation.idFormation WHERE formation.idFormation=1";
 }
 else
 { 
     if($_POST["choix"] == "web"){
-     // $sql= "SELECT createur FROM seriebd";
+     $sql= "SELECT * FROM `entreprise` JOIN `stage` ON stage.idEntreprise=entreprise.idEntreprise JOIN `user` ON stage.idUser=user.idUser JOIN `formation` ON user.idFormation=formation.idFormation WHERE formation.idFormation=3";
        
       }
      else {
@@ -26,7 +26,7 @@ else
       $sql= "SELECT * FROM entreprise";
     }
  else {
-          // $sql= "SELECT genre FROM seriebd";
+          $sql= "SELECT * FROM `Entreprise` JOIN `Stage` ON Stage.idEntreprise = Entreprise.idEntreprise JOIN `User` ON User.idUser = stage.idUser JOIN `Formation` ON user.idFormation=formation.idFormation WHERE Formation.idFormation = 2";
       }
 }
 }
