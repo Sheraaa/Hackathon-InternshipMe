@@ -14,7 +14,7 @@ var gameIcon = L.icon({
 });
 
 var wadIcon = L.icon({
-    iconUrl: './images/wad(1).png',
+    iconUrl: './images/Wad.png',
     iconSize:     [38, 95], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
