@@ -49,8 +49,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: ' <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(mymap); 
 var marker = L.marker([50.8638372, 4.3607629]).addTo(mymap); 
-marker.bindPopup("<b>Hello world!</b><br>It's Interface3.  <br> Rue Gaucheret 88, 1030 Schaerbeek <br> <a href ='https://www.interface3.be/'>www.interface3.be</a>").openPopup();
+marker.bindPopup("<b>Hello world!</b><br>It's <span id='I3'>Interface3</span> <br> Rue Gaucheret 88, 1030 Schaerbeek <br> <a href ='https://www.interface3.be/'>www.interface3.be</a>").openPopup();
 markerArray.push(marker); 
+
+
+
 
 
 function ConvertAdress(adresse,nomEntreprise,siteWebEntreprise,iCon){
